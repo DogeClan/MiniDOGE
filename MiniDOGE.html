@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,74 +11,87 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2b2b2b 100%);
-            color: #ecf0f1;
+            background-color: #1b2a6f;
+            color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: flex-start;
             min-height: 100vh;
             overflow: auto;
-            background-size: 200% 200%;
-            animation: gradient 10s ease infinite;
+            position: relative;
         }
 
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Animated hexagonal background */
+        .hexagons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://cdn.rawgit.com/SergeyPirogov/hexagon-grid/9cb5fe39/hexagon-grid.png') repeat;
+            filter: blur(5px);
+            animation: moveBackground 30s linear infinite;
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        @keyframes moveBackground {
+            from {
+                background-position: 0 0;
+            }
+
+            to {
+                background-position: 100px 100px;
+            }
         }
 
         .container {
-            background: rgba(50, 50, 50, 0.90);
+            background: rgba(40, 55, 92, 0.9);
             border-radius: 16px;
             padding: 40px;
-            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 16px 64px rgba(0, 0, 0, 0.5);
             max-width: 900px;
             width: 90%;
             margin: 40px auto;
-            backdrop-filter: blur(15px);
-            animation: fadeIn 0.5s ease-in-out;
             position: relative;
-            overflow: hidden;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            z-index: 2;
         }
 
         h1 {
             font-size: 48px;
             margin-bottom: 15px;
-            color: #f39c12;
-            text-align: center;
-            text-shadow: 0 0 20px rgba(243, 156, 18, 0.7);
+            color: #ffcc00; /* Gold */
+            text-shadow: 0 0 20px rgba(255, 204, 0, 0.7);
         }
 
         h2 {
             font-size: 32px;
             margin: 20px 0 10px;
-            color: #f1c40f;
-            text-align: center;
+            color: #ffcc00; /* Gold */
         }
 
-        img.doge {
-            width: 200px;
+        /* Moving logo styling */
+        .moving-logo {
+            width: 250px;
             height: auto;
             margin: 20px auto;
-            animation: bounce 1.5s infinite;
+            animation: logoMovement 3s ease-in-out infinite alternate;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-15px); }
-            60% { transform: translateY(-8px); }
+        @keyframes logoMovement {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-10px);
+            }
         }
 
         .iframe-container {
             margin: 20px 0;
             border-radius: 12px;
-            box-shadow: 0 8px 40px rgba(239, 59, 36, 0.8);
+            box-shadow: 0 8px 40px rgba(255, 204, 0, 0.5);
             overflow: hidden;
             position: relative;
             transition: transform 0.3s;
@@ -91,14 +105,13 @@
             width: 100%;
             max-height: 450px;
             border: none;
-            transition: opacity 0.2s;
         }
 
         .fullscreen-button {
             position: absolute;
             right: 10px;
             bottom: 10px;
-            background: linear-gradient(to right, #ff5733, #ffcc00);
+            background: linear-gradient(to right, #ffcc00, #e67e22);
             border: none;
             border-radius: 5px;
             color: white;
@@ -110,7 +123,7 @@
         }
 
         .fullscreen-button:hover {
-            background: linear-gradient(to right, #ffcc00, #ff5733);
+            background: linear-gradient(to right, #e67e22, #ffcc00);
             transform: translateY(-2px);
         }
 
@@ -119,7 +132,6 @@
             justify-content: center;
             margin-top: 20px;
             position: relative;
-            z-index: 10;
         }
 
         .input-group input {
@@ -128,15 +140,15 @@
             padding: 15px;
             margin-right: 10px;
             background-color: #34495e;
-            color: #ecf0f1;
-            border: 2px solid #f39c12;
+            color: #ffffff;
+            border: 2px solid #ffcc00;
             border-radius: 5px;
             transition: border 0.3s, box-shadow 0.3s;
         }
 
         .input-group input:focus {
-            border: 2px solid #f1c40f;
-            box-shadow: 0 0 8px rgba(243, 156, 18, 0.7);
+            border: 2px solid #d35400;
+            box-shadow: 0 0 8px rgba(211, 84, 0, 0.7);
             outline: none;
         }
 
@@ -145,7 +157,7 @@
             padding: 15px 25px;
             border: none;
             border-radius: 5px;
-            background: linear-gradient(to right, #f39c12, #e67e22);
+            background: linear-gradient(to right, #ffcc00, #e67e22);
             color: white;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -153,7 +165,7 @@
         }
 
         .input-group button:hover {
-            background: linear-gradient(to right, #e67e22, #f39c12);
+            background: linear-gradient(to right, #e67e22, #ffcc00);
             transform: translateY(-2px);
         }
 
@@ -169,122 +181,121 @@
                 flex-direction: column;
                 align-items: center;
             }
+
             .input-group input,
             .input-group button {
                 width: 100%;
                 margin-bottom: 10px;
             }
         }
-
-        .footer {
-            margin-top: 30px;
-            font-size: 14px;
-        }
     </style>
 </head>
+
 <body>
-<div class="container">
-    <h1>MiniDOGE</h1>
-    <img src="https://avatars.githubusercontent.com/u/146743206?v=4" class="doge" alt="Doge Meme">
-    
-    <div class="iframe-container">
-        <iframe id="content-frame" src=""></iframe>
-        <button class="fullscreen-button" onclick="toggleFullscreen('content-frame')">Fullscreen</button>
-    </div>
-    
-    <div class="input-group">
-        <input type="text" id="url-input" placeholder="Enter the URL to unblock" autofocus>
-        <button onclick="unblockWebsite()">Unblock</button>
-    </div>
-    <div class="status-message" id="status-message"></div>
+    <div class="hexagons"></div>
+    <div class="container">
+        <h1>MiniDOGE</h1>
+        <img src="https://avatars.githubusercontent.com/u/146743206?v=4" class="moving-logo" alt="Logo">
 
-    <h2>BlookSploit Flooder</h2>
-    <div class="iframe-container">
-        <iframe id="blooksploit-frame" src="https://blooksploit.ssp.42web.io/"></iframe>
-        <button class="fullscreen-button" onclick="toggleFullscreen('blooksploit-frame')">Fullscreen</button>
+        <div class="iframe-container">
+            <iframe id="content-frame" src=""></iframe>
+            <button class="fullscreen-button" onclick="toggleFullscreen('content-frame')">Fullscreen</button>
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="url-input" placeholder="Enter the URL to unblock" autofocus>
+            <button onclick="unblockWebsite()">Unblock</button>
+        </div>
+        <div class="status-message" id="status-message"></div>
+
+        <h2>BlookSploit Flooder</h2>
+        <div class="iframe-container">
+            <iframe id="blooksploit-frame" src="https://blooksploit.ssp.42web.io/"></iframe>
+            <button class="fullscreen-button" onclick="toggleFullscreen('blooksploit-frame')">Fullscreen</button>
+        </div>
+
+        <h2>Doge Unblocker:</h2>
+        <div class="iframe-container">
+            <iframe id="doge-unblocker-frame" src="https://dogev4.ssp.42web.io/"></iframe>
+            <button class="fullscreen-button" onclick="toggleFullscreen('doge-unblocker-frame')">Fullscreen</button>
+        </div>
     </div>
 
-    <h2>Doge Unblocker:</h2>
-    <div class="iframe-container">
-        <iframe id="doge-unblocker-frame" src="https://dogev4.ssp.42web.io/"></iframe>
-        <button class="fullscreen-button" onclick="toggleFullscreen('doge-unblocker-frame')">Fullscreen</button>
-    </div>
-</div>
+    <script>
+        function unblockWebsite() {
+            const urlInput = document.getElementById("url-input").value.trim();
+            const contentFrame = document.getElementById("content-frame");
+            const statusMessage = document.getElementById("status-message");
 
-<script>
-    function unblockWebsite() {
-        const urlInput = document.getElementById("url-input").value.trim();
-        const contentFrame = document.getElementById("content-frame");
-        const statusMessage = document.getElementById("status-message");
+            if (!urlInput || !isValidUrl(urlInput)) {
+                statusMessage.textContent = "Please enter a valid URL.";
+                statusMessage.style.color = "#FF0000";
+                return;
+            }
 
-        if (!urlInput || !isValidUrl(urlInput)) {
-            statusMessage.textContent = "Please enter a valid URL.";
-            statusMessage.style.color = "#FF0000";
-            return;
+            const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(urlInput)}`;
+
+            statusMessage.textContent = "Unblocking website, please wait...";
+            statusMessage.style.color = "#888";
+
+            fetch(proxyUrl)
+                .then(response => {
+                    if (response.ok) {
+                        return response.text();
+                    } else {
+                        throw new Error(`Failed to unblock website (${response.status})`);
+                    }
+                })
+                .then(content => {
+                    const doc = contentFrame.contentDocument || contentFrame.contentWindow.document;
+                    doc.open();
+                    doc.write(content);
+                    doc.close();
+                    adjustIframeDocument(doc, urlInput);
+                    statusMessage.textContent = "Website unblocked successfully!";
+                    statusMessage.style.color = "#2ecc71"; // green
+                })
+                .catch(error => {
+                    console.error("Error unblocking website:", error);
+                    statusMessage.textContent = "Failed to unblock the website. Please try again.";
+                    statusMessage.style.color = "#e74c3c"; // red
+
+                    const doc = contentFrame.contentDocument || contentFrame.contentWindow.document;
+                    doc.open();
+                    doc.write("<h2 style='color: red;'>Failed to load the website.</h2>");
+                    doc.close();
+                });
         }
 
-        const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(urlInput)}`;
-
-        statusMessage.textContent = "Unblocking website, please wait...";
-        statusMessage.style.color = "#888";
-
-        fetch(proxyUrl)
-            .then(response => {
-                if (response.ok) {
-                    return response.text();
-                } else {
-                    throw new Error(`Failed to unblock website (${response.status})`);
-                }
-            })
-            .then(content => {
-                const doc = contentFrame.contentDocument || contentFrame.contentWindow.document;
-                doc.open();
-                doc.write(content);
-                doc.close();
-                adjustIframeDocument(doc, urlInput);
-                statusMessage.textContent = "Website unblocked successfully!";
-                statusMessage.style.color = "#2ecc71"; // green
-            })
-            .catch(error => {
-                console.error("Error unblocking website:", error);
-                statusMessage.textContent = "Failed to unblock the website. Please try again.";
-                statusMessage.style.color = "#e74c3c"; // red
-
-                const doc = contentFrame.contentDocument || contentFrame.contentWindow.document;
-                doc.open();
-                doc.write("<h2 style='color: red;'>Failed to load the website.</h2>");
-                doc.close();
-            });
-    }
-
-    function adjustIframeDocument(doc, originalUrl) {
-        const base = doc.createElement('base');
-        base.href = originalUrl; 
-        doc.head.appendChild(base);
-    }
-
-    function isValidUrl(url) {
-        const pattern = new RegExp('^(https?:\\/\\/)?' + 
-            '((([a-z\\d]([a-z\\d-]*[a-z\\d])?)\\.)+[a-z]{2,}|' + 
-            'localhost|' + 
-            '\\d{1,3}\\d{1,3}\\d{1,3}\\d{1,3}|' + 
-            '\\[?[a-fA-F\\d:]+\\]?)' + 
-            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + 
-            '(\\?[;&a-z\\d%_.~+=-]*)?' + 
-            '(\\#[-a-z\\d_]*)?$','i'); 
-        return !!pattern.test(url);
-    }
-
-    function toggleFullscreen(iframeId) {
-        const iframe = document.getElementById(iframeId);
-        if (iframe.requestFullscreen) {
-            iframe.requestFullscreen();
-        } else if (iframe.webkitRequestFullscreen) { 
-            iframe.webkitRequestFullscreen();
-        } else if (iframe.msRequestFullscreen) { 
-            iframe.msRequestFullscreen();
+        function adjustIframeDocument(doc, originalUrl) {
+            const base = doc.createElement('base');
+            base.href = originalUrl;
+            doc.head.appendChild(base);
         }
-    }
-</script>
+
+        function isValidUrl(url) {
+            const pattern = new RegExp('^(https?:\\/\\/)?' +
+                '((([a-z\\d]([a-z\\d-]*[a-z\\d])?)\\.)+[a-z]{2,}|' +
+                'localhost|' +
+                '\\d{1,3}\\d{1,3}\\d{1,3}\\d{1,3}|' +
+                '\\[?[a-fA-F\\d:]+\\]?)' +
+                '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' +
+                '(\\?[;&a-z\\d%_.~+=-]*)?' +
+                '(\\#[-a-z\\d_]*)?$', 'i');
+            return !!pattern.test(url);
+        }
+
+        function toggleFullscreen(iframeId) {
+            const iframe = document.getElementById(iframeId);
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) {
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) {
+                iframe.msRequestFullscreen();
+            }
+        }
+    </script>
 </body>
+
 </html>
