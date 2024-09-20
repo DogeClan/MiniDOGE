@@ -70,6 +70,15 @@
             color: #ffcc00; /* Gold */
         }
 
+        h3 {
+            font-size: 40px; /* Larger font for games section */
+            margin-top: 40px;
+            text-align: center;
+            color: #ffcc00; /* Gold */
+            border-top: 2px solid #ffcc00; /* Divider line */
+            padding-top: 10px;
+        }
+
         /* Moving logo styling */
         .moving-logo {
             width: 250px;
@@ -105,6 +114,7 @@
             width: 100%;
             max-height: 450px;
             border: none;
+            display: none; /* Initially hidden */
         }
 
         .fullscreen-button {
@@ -123,6 +133,25 @@
         }
 
         .fullscreen-button:hover {
+            background: linear-gradient(to right, #e67e22, #ffcc00);
+            transform: translateY(-2px);
+        }
+
+        .load-game-button, .load-button {
+            width: 100%;
+            background: linear-gradient(to right, #ffcc00, #e67e22);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 20px;
+            cursor: pointer;
+            margin: 10px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .load-game-button:hover, .load-button:hover {
             background: linear-gradient(to right, #e67e22, #ffcc00);
             transform: translateY(-2px);
         }
@@ -187,6 +216,10 @@
                 width: 100%;
                 margin-bottom: 10px;
             }
+
+            iframe {
+                max-height: 300px; /* Reduced height for small devices */
+            }
         }
     </style>
 </head>
@@ -198,6 +231,7 @@
         <img src="https://avatars.githubusercontent.com/u/146743206?v=4" class="moving-logo" alt="Logo">
 
         <div class="iframe-container">
+            <button class="load-button" onclick="loadContent('content-frame', 'https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(urlInput)')">Load Unblocker</button>
             <iframe id="content-frame" src=""></iframe>
             <button class="fullscreen-button" onclick="toggleFullscreen('content-frame')">Fullscreen</button>
         </div>
@@ -210,20 +244,30 @@
 
         <h2>BlookSploit Flooder</h2>
         <div class="iframe-container">
-            <iframe id="blooksploit-frame" src="https://blooksploit.ssp.42web.io/"></iframe>
+            <button class="load-button" onclick="loadContent('blooksploit-frame', 'https://blooksploit.ssp.42web.io/');">Load BlookSploit</button>
+            <iframe id="blooksploit-frame" src=""></iframe>
             <button class="fullscreen-button" onclick="toggleFullscreen('blooksploit-frame')">Fullscreen</button>
         </div>
 
         <h2>Doge Unblocker:</h2>
         <div class="iframe-container">
-            <iframe id="doge-unblocker-frame" src="https://dogev4.ssp.42web.io/"></iframe>
+            <button class="load-button" onclick="loadContent('doge-unblocker-frame', 'https://dogev4.ssp.42web.io/');">Load Doge Unblocker</button>
+            <iframe id="doge-unblocker-frame" src=""></iframe>
             <button class="fullscreen-button" onclick="toggleFullscreen('doge-unblocker-frame')">Fullscreen</button>
         </div>
 
         <h2>Astroid v3</h2>
         <div class="iframe-container">
-            <iframe id="astroid-frame" src="https://astroid-dns.ssp.42web.io/"></iframe>
+            <button class="load-button" onclick="loadContent('astroid-frame', 'https://astroid-dns.ssp.42web.io/');">Load Astroid v3</button>
+            <iframe id="astroid-frame" src=""></iframe>
             <button class="fullscreen-button" onclick="toggleFullscreen('astroid-frame')">Fullscreen</button>
+        </div>
+
+        <h3>Games:</h3>
+        <button class="load-game-button" onclick="loadGame()">Load Drift Boss Game</button>
+        <div class="iframe-container">
+            <iframe id="drift-boss-frame" src=""></iframe>
+            <button class="fullscreen-button" onclick="toggleFullscreen('drift-boss-frame')">Fullscreen</button>
         </div>
     </div>
 
@@ -271,6 +315,18 @@
                     doc.write("<h2 style='color: red;'>Failed to load the website.</h2>");
                     doc.close();
                 });
+        }
+
+        function loadGame() {
+            const driftBossFrame = document.getElementById("drift-boss-frame");
+            driftBossFrame.src = "https://rawcdn.githack.com/ubg98/DriftBoss/gh-pages/index.html";
+            driftBossFrame.style.display = "block"; // Show the iframe
+        }
+
+        function loadContent(frameId, src) {
+            const frame = document.getElementById(frameId);
+            frame.src = src;
+            frame.style.display = "block"; // Show the iframe
         }
 
         function adjustIframeDocument(doc, originalUrl) {
